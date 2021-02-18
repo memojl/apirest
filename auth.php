@@ -1,6 +1,8 @@
 <?php 
 require_once 'clases/auth.class.php';
 require_once 'clases/respuestas.class.php';
+header("Access-Control-Allow-Origin: *");      
+header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
 
 $_auth = new auth;
 $_respuestas = new respuestas;
