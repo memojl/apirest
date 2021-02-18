@@ -1,6 +1,8 @@
 <?php
 require_once 'clases/respuestas.class.php';
 require_once 'clases/pacientes.class.php';
+header("Access-Control-Allow-Origin: *");      
+header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
 
 $_respuestas = new respuestas;
 $_pacientes = new pacientes;
