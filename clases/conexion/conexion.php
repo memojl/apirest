@@ -25,10 +25,10 @@ class conexion {
         }else{
             $value = [
                 "driver" => "mysql",
-                "host" => "localhost",
-                "database" => "apirest",
-                "username" => "root",
-                "password" => "",
+                "host" => "us-cdbr-east-03.cleardb.com",
+                "database" => "heroku_4508b8af49308d8",
+                "username" => "b6e038dc526164",
+                "password" => "9ee0c2b4",
                 "port" => "3306",
                 "charset" => "utf8mb4"
             ];    
