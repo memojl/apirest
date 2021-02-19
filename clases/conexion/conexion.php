@@ -11,14 +11,35 @@ class conexion {
 
 
     function __construct(){
-        $listadatos = $this->datosConexion();
-        foreach ($listadatos as $key => $value) {
-            $this->server = $value['server'];
-            $this->user = $value['user'];
+        //$listadatos = $this->datosConexion();
+        if($_SERVER['HTTP_HOST']=='localhost'){
+            $value = [
+                "driver" => "mysql",
+                "host" => "localhost",
+                "database" => "apirest",
+                "username" => "root",
+                "password" => "",
+                "port" => "3306",
+                "charset" => "utf8mb4"
+            ];
+        }else{
+            $value = [
+                "driver" => "mysql",
+                "host" => "us-cdbr-east-03.cleardb.com",
+                "database" => "heroku_4508b8af49308d8",
+                "username" => "b6e038dc526164",
+                "password" => "9ee0c2b4",
+                "port" => "3306",
+                "charset" => "utf8mb4"
+            ];    
+        }
+        //foreach ($listadatos as $key => $value) {
+            $this->server = $value['host'];
+            $this->user = $value['username'];
             $this->password = $value['password'];
             $this->database = $value['database'];
             $this->port = $value['port'];
-        }
+        //}
         $this->conexion = new mysqli($this->server,$this->user,$this->password,$this->database,$this->port);
         if($this->conexion->connect_errno){
             echo "algo va mal con la conexion";

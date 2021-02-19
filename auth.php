@@ -2,10 +2,13 @@
 require_once 'clases/auth.class.php';
 require_once 'clases/respuestas.class.php';
 header("Access-Control-Allow-Origin: *");      
-header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
 $_auth = new auth;
 $_respuestas = new respuestas;
+
+
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
