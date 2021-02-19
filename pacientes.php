@@ -2,7 +2,12 @@
 require_once 'clases/respuestas.class.php';
 require_once 'clases/pacientes.class.php';
 header("Access-Control-Allow-Origin: *");      
+<<<<<<< HEAD
 header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+=======
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+>>>>>>> 9a8104630198f11bc30450a604970c6c141c9dab
 
 $_respuestas = new respuestas;
 $_pacientes = new pacientes;
