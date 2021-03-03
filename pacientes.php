@@ -2,9 +2,10 @@
 require_once 'clases/respuestas.class.php';
 require_once 'clases/pacientes.class.php';
 header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+//header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+header ("Access-Control-Allow-Headers: *");
 
 $_respuestas = new respuestas;
 $_pacientes = new pacientes;
@@ -58,6 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
 }else if($_SERVER['REQUEST_METHOD'] == "DELETE"){
 
         $headers = getallheaders();
+        //$headers = array_change_key_case(getallheaders(), CASE_LOWER);
         if(isset($headers["token"]) && isset($headers["pacienteId"])){
             //recibimos los datos enviados por el header
             $send = [
@@ -72,8 +74,9 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
         
         //enviamos datos al manejador
         $datosArray = $_pacientes->delete($postBody);
-        //delvovemos una respuesta header('Content-Type: application/json');
-        header('content-type: application/json; charset=utf-8');
+        //delvovemos una respuesta 
+        header('Content-Type: application/json');
+        //header('content-type: application/json; charset=utf-8');
         if(isset($datosArray["result"]["error_id"])){
             $responseCode = $datosArray["result"]["error_id"];
             http_response_code($responseCode);
