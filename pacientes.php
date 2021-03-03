@@ -9,7 +9,6 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 $_respuestas = new respuestas;
 $_pacientes = new pacientes;
 
-
 if($_SERVER['REQUEST_METHOD'] == "GET"){
 
     if(isset($_GET["page"])){
@@ -63,7 +62,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
             //recibimos los datos enviados por el header
             $send = [
                 "token" => $headers["token"],
-                "pacienteId" =>$headers["pacienteId"]
+                "pacienteId" => $headers["pacienteId"]
             ];
             $postBody = json_encode($send);
         }else{
@@ -73,8 +72,8 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
         
         //enviamos datos al manejador
         $datosArray = $_pacientes->delete($postBody);
-        //delvovemos una respuesta 
-        header('Content-Type: application/json');
+        //delvovemos una respuesta header('Content-Type: application/json');
+        header('content-type: application/json; charset=utf-8');
         if(isset($datosArray["result"]["error_id"])){
             $responseCode = $datosArray["result"]["error_id"];
             http_response_code($responseCode);
