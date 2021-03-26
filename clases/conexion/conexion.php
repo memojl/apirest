@@ -12,7 +12,7 @@ class conexion {
 
     function __construct(){
         //$listadatos = $this->datosConexion();
-        if($_SERVER['HTTP_HOST']!='localhost'){
+        if($_SERVER['HTTP_HOST']=='apirestsys.herokuapp.com'){
             $value = [
                 "driver" => "mysql",
                 "host" => "us-cdbr-east-03.cleardb.com",
