@@ -12,13 +12,13 @@ class conexion {
 
     function __construct(){
         //$listadatos = $this->datosConexion();
-        if($_SERVER['HTTP_HOST']=='apirestsys.herokuapp.com'){
+        if($_SERVER['HTTP_HOST']=='localhost'){
             $value = [
                 "driver" => "mysql",
-                "host" => "us-cdbr-east-03.cleardb.com",
-                "database" => "heroku_4508b8af49308d8",
-                "username" => "b6e038dc526164",
-                "password" => "9ee0c2b4",
+                "host" => "localhost",
+                "database" => "apirest",
+                "username" => "root",
+                "password" => "",
                 "port" => "3306",
                 "charset" => "utf8mb4"
             ];
