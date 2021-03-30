@@ -68,8 +68,8 @@ global $conec, $tabla;
 
 //STORE
 function store($id){
-global $conec, $tabla;
-    $sql = $conec->prepare("SELECT * FROM $tabla where ID=:id");
+global $conec, $tabla, $IdT;
+    $sql = $conec->prepare("SELECT * FROM $tabla where $IdT=:id");
     $sql->bindValue(':id', $id);
     $sql->execute();
     $json=$sql->fetch(PDO::FETCH_ASSOC);
@@ -100,11 +100,11 @@ global $conec,$tabla,$_POST;
 
 //UPDATE
 function update($id){
-global $conec,$tabla,$_PUT;
+global $conec,$tabla,$_PUT,$IdT;
     $input = $_PUT;
     $postId = $id; 
     $fields = getParams($input); //echo $fields;//exit();
-    $sql = "UPDATE $tabla SET $fields WHERE ID='$postId'";
+    $sql = "UPDATE $tabla SET $fields WHERE $IdT='$postId'";
     $statement = $conec->prepare($sql);
     bindAllValues($statement, $input);
     $statement->execute();
@@ -115,8 +115,8 @@ global $conec,$tabla,$_PUT;
 
 //DELETE
 function delete($id){
-global $conec,$tabla;
-    $statement = $conec->prepare("DELETE FROM $tabla where ID=:id");
+global $conec,$tabla,$IdT;
+    $statement = $conec->prepare("DELETE FROM $tabla where $IdT=:id");
     $statement->bindValue(':id', $id);
     $statement->execute();
     header("HTTP/1.1 200 OK");
