@@ -12,6 +12,8 @@ if($ex_scfg==1){
 
 $tab_signup = ($ex_scfg==1)?$DBprefix.'signup':'usuarios';
 $tab_token = ($ex_scfg==1)?$DBprefix.'token':'usuarios_token';
+$uname = ($ex_scfg==1)?'username':'Usuario';
+$passpw = ($ex_scfg==1)?'password':'Password';
 
 //CONEXION MYSQLI
 function conexion(){
