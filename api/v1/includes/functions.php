@@ -197,8 +197,8 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$uname,$passpw;
     $login = htmlspecialchars(trim($U));
     $pass = trim($P);
     $pass1 = ($pass=='123456')?$pass:sha1(md5($pass));// Encriptamos "Ciframos" el password
-    $test = 'TEST: SELECT * FROM '.$tab_signup.' WHERE '.$uname.'='.$login.' && '.$passpw.'='.$pass1;
-    $sql = $conec->prepare("SELECT * FROM $tab_signup WHERE $uname=:username && $passpw=:password");
+    $test = 'SELECT * FROM '.$tab_signup.' WHERE '.$uname.'='.$login.' && '.$passpw.'='.$pass1;
+    $sql = $conec->prepare($test);
     $sql->bindValue(':username', $login);
     $sql->bindValue(':password', $pass1);
     $sql->execute();
