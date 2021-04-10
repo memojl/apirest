@@ -175,7 +175,7 @@ global $conec,$tabla,$_DEL,$IdT;
     $token = $_DEL['token'];
     $validar = verificarToken($token);
     if($validar!=NULL){
-        $sql = $conec->prepare("DELETE FROM $tabla where $IdT=:id");
+        $sql = $conec->prepare("DELETE FROM $tabla WHERE $IdT=:id");
         $sql->bindValue(':id', $id);
         $sql->execute();
         header("HTTP/1.1 200 OK");
@@ -198,7 +198,7 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$uname,$passpw;
     $pass = trim($P);
     $pass1 = ($pass=='123456')?$pass:sha1(md5($pass));// Encriptamos "Ciframos" el password
     $test = 'SELECT * FROM '.$tab_signup.' WHERE '.$uname.'='.$login.' && '.$passpw.'='.$pass1;
-    $sql = $conec->prepare($test);
+    $sql = $conec->prepare("SELECT * FROM $tab_signup WHERE $passpw=:password");
     $sql->bindValue(':username', $login);
     $sql->bindValue(':password', $pass1);
     $sql->execute();
