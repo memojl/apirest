@@ -189,7 +189,7 @@ global $conec,$tabla,$_DEL,$IdT;
 
 //LOGIN
 function login(){
-global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$uname;
+global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$uname,$passpw;
     //$tabla='signup';
     $U=(isset($_POST['username']))?$_POST['username']:'';
     $P=(isset($_POST['password']))?$_POST['password']:'';
@@ -198,7 +198,7 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$uname;
     $pass = trim($P);
     $pass1 = ($pass=='123456')?$pass:sha1(md5($pass));// Encriptamos "Ciframos" el password
     
-    $sql = $conec->prepare("SELECT * FROM $tab_signup WHERE $uname=:username && password=:password");
+    $sql = $conec->prepare("SELECT * FROM $tab_signup WHERE $uname=:username && $passpw=:password");
     $sql->bindValue(':username', $U);
     $sql->bindValue(':password', $pass1);
     $sql->execute();
