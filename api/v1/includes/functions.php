@@ -197,7 +197,7 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$uname,$passpw;
     $login = htmlspecialchars(trim($U));
     $pass = trim($P);
     $pass1 = ($pass=='123456')?$pass:sha1(md5($pass));// Encriptamos "Ciframos" el password
-    //echo $login.'|'.$pass1.'('.$tab_signup.')';exit();
+    $test = 'TEST: '.$login.'|'.$pass1.'('.$tab_signup.')';
     $sql = $conec->prepare("SELECT * FROM $tab_signup WHERE $uname=:username && $passpw=:password");
     $sql->bindValue(':username', $login);
     $sql->bindValue(':password', $pass1);
@@ -229,7 +229,7 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$uname,$passpw;
             echo json_encode($resultado);
         }
     }else{
-        Error('ERROR: El usuario o password es incorrecto');
+        Error('ERROR: El usuario o password es incorrecto '.$test);
     }
 }
 
