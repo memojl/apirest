@@ -189,7 +189,7 @@ global $conec,$tabla,$_DEL,$IdT;
 
 //LOGIN
 function login(){
-global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$uname,$passpw,$IdT;
+global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST;
     //$tabla='signup';
     $U=(isset($_POST['username']))?$_POST['username']:'';
     $P=(isset($_POST['password']))?$_POST['password']:'';
@@ -197,16 +197,15 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$uname,$passpw,$IdT;
     $login = htmlspecialchars(trim($U));
     $pass = trim($P);
     $pass1 = ($pass=='123456')?$pass:sha1(md5($pass));// Encriptamos "Ciframos" el password
-    $test = 'TEST: '.$uname.':'.$login.'|'.$passpw.':'.$pass1.'('.$tab_signup.')';
-    $sql = $conec->prepare("SELECT * FROM $tab_signup WHERE $uname=:username && $passpw=:password");
-    $sql->bindValue(':username', $login);
+    
+    $sql = $conec->prepare("SELECT * FROM $tab_signup WHERE username=:username && password=:password");
+    $sql->bindValue(':username', $U);
     $sql->bindValue(':password', $pass1);
     $sql->execute();
     $sesid=$sql->fetch(PDO::FETCH_ASSOC);
-    $ID = ($sesid['ID']!='')?$sesid['ID']:'1';
-    $us = $sesid[$uname];
+    $ID = $sesid['ID'];
+    $us = $sesid['username'];
     $pa = $sesid['password'];
-    $IdT = ($tab_token=='usuarios_token')?'TokenId':'ID';
     if($us==$U || $pa==$P){
         //$tabla='token';
         $token = sha1(uniqid(rand(),true));//Generador de Token //Token();
@@ -214,7 +213,7 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$uname,$passpw,$IdT;
         $tok = $conec->prepare($tok);
         $tok->execute();
         if($tok){
-            $sqlt = $conec->prepare("SELECT * FROM $tab_token WHERE ID_user=:ID_user && Estado='Activo' ORDER BY $IdT DESC");
+            $sqlt = $conec->prepare("SELECT * FROM $tab_token WHERE ID_user=:ID_user && Estado='Activo' ORDER BY ID DESC");
             $sqlt->bindValue(':ID_user', $ID);
             $sqlt->execute();
             $json=$sqlt->fetch(PDO::FETCH_ASSOC);
@@ -226,11 +225,11 @@ global $conec,$DBprefix,$tab_signup,$tab_token,$date,$_POST,$uname,$passpw,$IdT;
             $resultado['IDU']=$ID;
             $resultado['mensaje']='OK';
             $resultado['token']=$token;
-            //$resultado['VerifcarToken']=verificarToken($token);
+            $resultado['VerifcarToken']=verificarToken($token);
             echo json_encode($resultado);
         }
     }else{
-        Error('ERROR: El usuario o password es incorrecto '.$test);
+        Error('ERROR: El usuario o password es incorrecto');
     }
 }
 
