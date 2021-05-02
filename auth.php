@@ -1,18 +1,14 @@
 <?php 
 require_once 'clases/auth.class.php';
 require_once 'clases/respuestas.class.php';
-//header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Credentials: true');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS');
-header("Access-Control-Allow-Headers: X-Requested-With");
-//header('Content-Type: text/html; charset=utf-8');
 header('P3P: CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"');
 
 $_auth = new auth;
 $_respuestas = new respuestas;
-
-
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
