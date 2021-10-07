@@ -1,5 +1,4 @@
 <?php
-include 'sqlite.php';
 function buscar_archivo1($path_file){
  return $val=(file_exists($path_file))?1:0;
 }
@@ -25,7 +24,6 @@ $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DB); //conexión ala base
         return $mysqli; //retorna la conexión a la base de datos mysql
     }
 }
-$mysqli=conexion();
 
 //CONEXION PDO
 function connect(){
@@ -38,10 +36,13 @@ function connect(){
         exit($exception->getMessage());
     }
 }
-$conec=connect();
 
+include 'sqlite.php';
 if($dbSQLite!=''){
     $conec=connect_sqlite($dbSQLite);
+}else{
+    $conec=connect();
+    $mysqli=conexion();
 }
 
 include 'lib.php';
