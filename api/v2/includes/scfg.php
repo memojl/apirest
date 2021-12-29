@@ -27,7 +27,7 @@ $config = [
     "charset" => "utf8mb4"
 ];
 // Prefix for the database tables.
-$DBprefix = "php_";
+$DBprefix = "";
 // Project root path		
 $path_root = ($_SERVER['HTTP_HOST']=='localhost')?'MisSitios/apirest/':'';
 // Database name and path for sqlite
