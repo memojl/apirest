@@ -1,18 +1,18 @@
 <?php 
-$h_s='phponix.webcindario.com';
+$h_s='apirestsys.herokuapp.com';
 if($_SERVER['HTTP_HOST']==$h_s || $_SERVER['HTTP_HOST']=='www.'.$h_s){
     // Localhost Production
-    $db_host = "mysql.webcindario.com";
+    $db_host = "us-cdbr-east-03.cleardb.com";
     // Database Name      
-    $db_base = ""; 
+    $db_base = "heroku_4508b8af49308d8"; 
     // Database Username     
-    $db_user = "";
+    $db_user = "b6e038dc526164";
     // Database Password       
-    $db_pass = "";     	
+    $db_pass = "9ee0c2b4";     	
 }else{
     // Localhost Development
     $db_host = "localhost";
-    $db_base = "phponix_dev";
+    $db_base = "apirest";
     $db_user = "root"; 
     $db_pass = "";     	        
 }
@@ -29,7 +29,7 @@ $config = [
 // Prefix for the database tables.
 $DBprefix = "php_";
 // Project root path		
-$path_root = '';
+$path_root = ($_SERVER['HTTP_HOST']=='localhost')?'MisSitios/apirest/':'';
 // Database name and path for sqlite
 $rut = (basename($_SERVER['PHP_SELF'])=='index.php')?'../':'../../';
 $dbSQLite=$rut.'db/'.$config['database'].'.db';

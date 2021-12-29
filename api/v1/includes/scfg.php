@@ -21,7 +21,7 @@ $config = [
     "charset" => "utf8mb4"
 ];
 $DBprefix = "";		// Prefijo para las tablas de la Base de datos.
-$path_root = 'MisSitios/apirest/';
+$path_root = ($_SERVER['HTTP_HOST']=='localhost')?'MisSitios/apirest/':'';
 
 /*DEFINICION DE VARIABLES PARA PHP7*/
 define('DB_HOST',$db_host);
