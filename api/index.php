@@ -26,7 +26,7 @@
         </code>
     </div>      
     <div class="divbody">   
-        <h3>Pacientes - Utilizar /v1 o /v2</h3>
+        <h3>Pacientes - Utilizar versión /v1 ó /v2</h3>
         <code>
            GET  /pacientes
            <br>
@@ -58,7 +58,7 @@
 
         </code>
         <code>
-           PUT  /pacientes
+           PUT  /pacientes/$idPaciente
            <br> 
            {
             <br> 
@@ -84,7 +84,7 @@
 
         </code>
         <code>
-           DELETE  /pacientes
+           DELETE  /pacientes/$idPaciente
            <br> 
            {   
                <br>    
