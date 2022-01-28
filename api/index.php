@@ -26,7 +26,7 @@
         </code>
     </div>      
     <div class="divbody">   
-        <h3>Pacientes</h3>
+        <h3>Pacientes - Utilizar /v1 o /v2</h3>
         <code>
            GET  /pacientes
            <br>
