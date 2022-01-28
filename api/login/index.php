@@ -9,6 +9,7 @@ header("Access-Control-Allow-Headers: X-Requested-With");
 header('P3P: CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"');
 
 //header('Content-Type: application/json');
+//echo $_SERVER['REQUEST_METHOD']; //Add /index.php to the URL
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $_POST = json_decode(file_get_contents('php://input'),true);
     login();
