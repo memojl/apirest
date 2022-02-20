@@ -1,4 +1,5 @@
 <?php 
+//mysql://b6e038dc526164:9ee0c2b4@us-cdbr-east-03.cleardb.com/heroku_4508b8af49308d8?reconnect=true
 $h_s='apirestsys.herokuapp.com';
 if($_SERVER['HTTP_HOST']==$h_s || $_SERVER['HTTP_HOST']=='www.'.$h_s){
     // Localhost Production
