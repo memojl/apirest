@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-01-2022 a las 04:48:37
+-- Tiempo de generación: 16-05-2022 a las 06:36:12
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -50,6 +50,30 @@ INSERT INTO `citas` (`CitaId`, `PacienteId`, `Fecha`, `HoraInicio`, `HoraFIn`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `links`
+--
+
+CREATE TABLE `links` (
+  `ID` int(11) NOT NULL,
+  `title` varchar(150) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `description` text,
+  `cate` varchar(100) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `links`
+--
+
+INSERT INTO `links` (`ID`, `title`, `url`, `description`, `cate`, `user_id`, `created_at`) VALUES
+(1, 'Multiportal', 'https://multiportal.webcindario.com/', 'Sitio web de Multiportal', 'web', 1, '2021-06-25 22:33:04'),
+(2, 'Multiportal', 'https://multiportal.webcindario.com/', 'Sitio Web de Multiportal', 'web', 2, '2021-06-25 22:33:59');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `pacientes`
 --
 
@@ -76,7 +100,9 @@ INSERT INTO `pacientes` (`PacienteId`, `DNI`, `Nombre`, `Direccion`, `CodigoPost
 (4, 'D000000004', 'Maria Mendez', 'Calle de pruebas 4', '20004', '633281516', 'F', '1980-01-01', 'Paciente4@gmail.com'),
 (5, 'E000000005', 'Zamuel Valladares', 'Calle de pruebas 5', '20006', '633281519', 'M', '1985-12-15', 'Paciente5@gmail.com'),
 (6, 'F000000006', 'Angel Rios', 'Calle de pruebas 6', '20005', '633281510', 'M', '1988-11-30', 'Paciente6@gmail.com'),
-(8, 'F00000014', 'Arturo Velazquez', 'Calle de prueba', '76000', '4427654321', 'M', '2012-01-24', 'avelazque@gmail.com');
+(8, 'F00000014', 'Arturo Velazquez', 'Calle de prueba', '76000', '4427654321', 'M', '2012-01-24', 'avelazque@gmail.com'),
+(9, '233u467', 'Memo', NULL, '76080', '44276543321', 'M', '0000-00-00', 'm@m.com'),
+(12, '1233u4670', 'Luis Cornejo', 'Calle norte', '76080', '44276543321', 'M', '1982-12-15', 'm@m.com');
 
 -- --------------------------------------------------------
 
@@ -151,6 +177,15 @@ CREATE TABLE `token` (
   `Fecha` varchar(22) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `token`
+--
+
+INSERT INTO `token` (`ID`, `ID_user`, `Token`, `Estado`, `Fecha`) VALUES
+(1, 1, '606f03c0ef493bd2c7b4c33a13149aedb0476833', 'Activo', '2022-01-28 20:47:09'),
+(2, 1, '05fb42ff2cb91bb01ba10d8be62b9c11ae3306b7', 'Activo', '2022-02-07 18:16:08'),
+(3, 1, 'e2c1114427b152e21210ffb2086901f70e07ed51', 'Activo', '2022-02-20 19:24:39');
+
 -- --------------------------------------------------------
 
 --
@@ -213,6 +248,12 @@ ALTER TABLE `citas`
   ADD PRIMARY KEY (`CitaId`);
 
 --
+-- Indices de la tabla `links`
+--
+ALTER TABLE `links`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indices de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
@@ -253,10 +294,16 @@ ALTER TABLE `citas`
   MODIFY `CitaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `links`
+--
+ALTER TABLE `links`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
-  MODIFY `PacienteId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `PacienteId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `signup`
@@ -268,7 +315,7 @@ ALTER TABLE `signup`
 -- AUTO_INCREMENT de la tabla `token`
 --
 ALTER TABLE `token`
-  MODIFY `ID` int(9) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(9) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
