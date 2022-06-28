@@ -1,15 +1,14 @@
 <?php 
-//mysql://b6e038dc526164:9ee0c2b4@us-cdbr-east-03.cleardb.com/heroku_4508b8af49308d8?reconnect=true
 $h_s='apirestsys.herokuapp.com';
 if($_SERVER['HTTP_HOST']==$h_s || $_SERVER['HTTP_HOST']=='www.'.$h_s){
     // Localhost Production
-    $db_host = "us-cdbr-east-03.cleardb.com";
+    $db_host = "bmlx3df4ma7r1yh4.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
     // Database Name      
-    $db_base = "heroku_4508b8af49308d8"; 
+    $db_base = "ex9hiavlrlzb4p4j"; 
     // Database Username     
-    $db_user = "b6e038dc526164";
+    $db_user = "t2nrebq31l7vemjj";
     // Database Password       
-    $db_pass = "9ee0c2b4";
+    $db_pass = "cki4spdyby9iv1cs";
 }else{
     // Localhost Development
     $db_host = "localhost";

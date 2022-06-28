@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2022 a las 06:36:12
+-- Tiempo de generación: 28-06-2022 a las 06:14:08
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -177,15 +177,6 @@ CREATE TABLE `token` (
   `Fecha` varchar(22) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `token`
---
-
-INSERT INTO `token` (`ID`, `ID_user`, `Token`, `Estado`, `Fecha`) VALUES
-(1, 1, '606f03c0ef493bd2c7b4c33a13149aedb0476833', 'Activo', '2022-01-28 20:47:09'),
-(2, 1, '05fb42ff2cb91bb01ba10d8be62b9c11ae3306b7', 'Activo', '2022-02-07 18:16:08'),
-(3, 1, 'e2c1114427b152e21210ffb2086901f70e07ed51', 'Activo', '2022-02-20 19:24:39');
-
 -- --------------------------------------------------------
 
 --
@@ -227,15 +218,6 @@ CREATE TABLE `usuarios_token` (
   `Estado` varchar(45) CHARACTER SET armscii8 DEFAULT NULL,
   `Fecha` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `usuarios_token`
---
-
-INSERT INTO `usuarios_token` (`TokenId`, `UsuarioId`, `Token`, `Estado`, `Fecha`) VALUES
-(1, '1', '8c581287c1151c8188e3f99891939dcc', 'Activo', '2021-05-07 03:27:00'),
-(2, '1', '4f0e799c4451f51ca3001a352285c3fa', 'Activo', '2021-05-08 04:45:00'),
-(3, '1', 'c64d0b523e85f1a481d3bdaff6c5eb03', 'Activo', '2021-05-08 04:45:00');
 
 --
 -- Índices para tablas volcadas
@@ -315,7 +297,7 @@ ALTER TABLE `signup`
 -- AUTO_INCREMENT de la tabla `token`
 --
 ALTER TABLE `token`
-  MODIFY `ID` int(9) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(9) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -327,7 +309,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios_token`
 --
 ALTER TABLE `usuarios_token`
-  MODIFY `TokenId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `TokenId` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
