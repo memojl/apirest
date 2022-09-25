@@ -29,8 +29,8 @@ global $conec,$DBprefix,$tabla,$bootstrap,$ex_scfg;
 $bootstrap =($ex_scfg==1)?$bootstrap:'<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">';
 //$mysqli=conexion();
     if($tabla!='signup' && $tabla!='token' && $tabla!=NULL){
-        $tabla = ($tabla=='_signup' || $tabla=='_token' && $ex_scfg!=1)?str_replace('_','',$tabla):$tabla;           
-        $tabla = ($tabla==$DBprefix.'signup' || $tabla==$DBprefix.'token')?$tabla:$DBprefix.$tabla;
+        $tabla = ($tabla=='_signup' || $tabla=='_token')?str_replace('_','',$tabla):$tabla;           
+        $tabla = $DBprefix.$tabla;
         $sql = "SELECT * FROM ".$tabla.";";//$sql = mysqli_query($mysqli,"DESCRIBE ".$tabla.";");
         try {
             $result = $conec->query($sql);
