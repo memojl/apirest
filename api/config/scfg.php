@@ -43,7 +43,7 @@ $sel_apiType = $apiType[0];
 $sesionToken = ['sesion', 'localStorage'];
 $sel_sesionToken = $sesionToken[0];
 // Project root path		
-$path_root = ($_SERVER['HTTP_HOST'] == 'localhost') ? 'MisSitios/apirestm/' : '';
+$path_root = ($_SERVER['HTTP_HOST'] == 'localhost') ? 'MisSitios/apirest/' : '';
 // Database name and path for sqlite
 $rut = (basename($_SERVER['PHP_SELF']) == 'index.php') ? '../' : '../../';
 $dbSQLite = $rut . 'db/' . $config['database'] . '.db';

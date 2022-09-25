@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2022 a las 06:14:08
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Tiempo de generación: 22-09-2022 a las 17:45:51
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -57,10 +56,10 @@ CREATE TABLE `links` (
   `ID` int(11) NOT NULL,
   `title` varchar(150) NOT NULL,
   `url` varchar(255) NOT NULL,
-  `description` text,
+  `description` text DEFAULT NULL,
   `cate` varchar(100) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -69,7 +68,7 @@ CREATE TABLE `links` (
 
 INSERT INTO `links` (`ID`, `title`, `url`, `description`, `cate`, `user_id`, `created_at`) VALUES
 (1, 'Multiportal', 'https://multiportal.webcindario.com/', 'Sitio web de Multiportal', 'web', 1, '2021-06-25 22:33:04'),
-(2, 'Multiportal', 'https://multiportal.webcindario.com/', 'Sitio Web de Multiportal', 'web', 2, '2021-06-25 22:33:59');
+(9, 'Phponix', 'https://phponix.webcindario.com', 'Sitio Web Phponix', 'web', 2, '2022-07-08 05:26:52');
 
 -- --------------------------------------------------------
 
@@ -180,6 +179,20 @@ CREATE TABLE `token` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `upload_files`
+--
+
+CREATE TABLE `upload_files` (
+  `ID` int(11) UNSIGNED NOT NULL,
+  `nombre` varchar(150) NOT NULL,
+  `type_file` varchar(30) NOT NULL,
+  `filec` longblob NOT NULL,
+  `created_at` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -254,6 +267,12 @@ ALTER TABLE `token`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indices de la tabla `upload_files`
+--
+ALTER TABLE `upload_files`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -279,7 +298,7 @@ ALTER TABLE `citas`
 -- AUTO_INCREMENT de la tabla `links`
 --
 ALTER TABLE `links`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `pacientes`
@@ -298,6 +317,12 @@ ALTER TABLE `signup`
 --
 ALTER TABLE `token`
   MODIFY `ID` int(9) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `upload_files`
+--
+ALTER TABLE `upload_files`
+  MODIFY `ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
